@@ -7,9 +7,15 @@ const schema = mongoose.Schema({
    },
    duracao_meses: {
       type: Number,
-      required: true
+      required: true,
+      default: 6  // Maioria dos cursos: 6 meses
    },
    carga_horaria: {
+      type: Number,
+      required: true,
+      default: 96 // Maioria dos cursos: 96 horas
+   },
+   valor_total: {
       type: Number,
       required: true
    }
