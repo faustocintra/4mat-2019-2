@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/curso');
+const controller = require('../controllers/turma');
 
 router.post('/', controller.novo);
 router.get('/', controller.listar);

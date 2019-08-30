@@ -1,4 +1,4 @@
-const Curso = require('../models/Curso');
+const Professor = require('../models/Professor');
 
 const controller = {}; // Objeto vazio
 
@@ -10,7 +10,7 @@ const controller = {}; // Objeto vazio
 // que pode demorar a ser executada
 controller.novo = async function(req, res) {
    try {
-      await Curso.create(req.body);
+      await Professor.create(req.body);
       // HTTP 201: Created
       res.sendStatus(201);
    }
@@ -23,9 +23,9 @@ controller.novo = async function(req, res) {
 
 controller.listar = async function(req, res) {
    try {
-      // Retorna um vetor de cursos
-      const cursos = await Curso.find();
-      res.send(cursos); 
+      // Retorna um vetor de professores
+      const professores = await Professor.find();
+      res.send(professores); 
    }
    catch(erro) {
       console.error(erro);
@@ -36,9 +36,9 @@ controller.listar = async function(req, res) {
 controller.obterUm = async function(req, res) {
    try {
       const id = req.params.id;
-      const curso = await Curso.findById(id);
-      if(curso) { // Se o curso tiver sido encontrado
-         res.send(curso);
+      const professor = await Professor.findById(id);
+      if(professor) { // Se o professor tiver sido encontrado
+         res.send(professor);
       }
       else {
          // HTTP 404: Not found
@@ -54,7 +54,7 @@ controller.obterUm = async function(req, res) {
 controller.atualizar = async function(req, res) {
    try {
       const id = req.body._id;
-      const modificado = await Curso.findOneAndUpdate({_id : id}, req.body);
+      const modificado = await Professor.findOneAndUpdate({_id : id}, req.body);
       if(modificado) {
          // HTTP 204: No content
          res.sendStatus(204);
@@ -72,7 +72,7 @@ controller.atualizar = async function(req, res) {
 controller.excluir = async function(req, res) {
    try {
       const id = req.body._id;
-      const excluido = await Curso.findOneAndDelete({_id: id});
+      const excluido = await Professor.findOneAndDelete({_id: id});
       if(excluido) {
          res.sendStatus(204);
       }
