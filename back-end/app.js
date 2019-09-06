@@ -29,4 +29,13 @@ app.use('/professor', professor);
 const turma = require('./routes/turma');
 app.use('/turma', turma);
 
+const aluno = require('./routes/aluno');
+app.use('/aluno', aluno);
+
+const avaliacao = require('./routes/avaliacao');
+app.use('/avaliacao', avaliacao);
+
+const nota = require('./routes/nota');
+app.use('/nota', nota);
+
 module.exports = app;
