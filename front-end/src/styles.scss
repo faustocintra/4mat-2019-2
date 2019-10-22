@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~material-design-icons/iconfont/material-icons.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import "~material-design-icons/iconfont/material-icons.css";
+table[mat-table] {
+   width: 100%;
+}
+
+div.content {
+   padding: 0; /* Sem espaçamento interno */
+   margin: 20px; /* 20px nos quatro lados */
+}
+
+.btn-lista {
+   visibility: hidden;
+}
+
+.mat-row:hover .btn-lista {
+   visibility: visible;
+}
+
+.mat-row:hover {
+   /* Amarelo com apenas 10% de opacidade */
+   background-color: rgba(yellow, 0.10);
+}
