@@ -25,3 +25,24 @@ div.content {
    /* Amarelo com apenas 10% de opacidade */
    background-color: rgba(yellow, 0.10);
 }
+
+.action-new {
+   background: transparent;
+   margin-bottom: 20px;
+}
+
+.action-new .mat-toolbar-row {
+   padding: 0;
+}
+
+.action-new .mat-raised-button {
+   font-size: 125%;
+   padding: 8px 16px;
+}
+
+form mat-form-field {
+   min-width: 150px;
+   max-width: 500px;
+   width: 100%;
+   margin-right: 30px;
+}
