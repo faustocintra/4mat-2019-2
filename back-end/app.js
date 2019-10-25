@@ -11,6 +11,9 @@ database('mongodb://localhost:27017/4mat-2019-2');
 
 var app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
