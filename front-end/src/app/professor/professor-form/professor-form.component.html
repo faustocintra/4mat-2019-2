@@ -1,25 +1,57 @@
 <h1>{{ title }}</h1>
 
-<form>
-   
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+
    <mat-form-field>
-      <input matInput placeholder="Nome completo" required
-      [(ngModel)]="professor.nome">
+      <input matInput placeholder="Nome completo" required [(ngModel)]="professor.nome"
+         name="nome">
    </mat-form-field>
 
    <mat-form-field>
-      <textarea matInput placeholder="Formação"
-      [(ngModel)]="professor.formacao" rows="4"></textarea>
+      <textarea matInput placeholder="Formação" [(ngModel)]="professor.formacao" rows="4" name="formacao"></textarea>
    </mat-form-field>
 
    <mat-form-field>
-      <textarea matInput placeholder="Endereço completo"
-      [(ngModel)]="professor.endereco" rows="2"></textarea>
+      <textarea matInput placeholder="Endereço completo" [(ngModel)]="professor.endereco" rows="2" name="endereco"></textarea>
    </mat-form-field>
 
    <mat-form-field>
-      <input matInput placeholder="Telefone de contato" required
-      [(ngModel)]="professor.telefone" mask="(00) 000000009">
+      <input matInput placeholder="Telefone de contato" required [(ngModel)]="professor.telefone" mask="(00) 000000009" name="telefone">
    </mat-form-field>
+
+   <mat-form-field>
+     <input matInput [matDatepicker]="data_nascimento" placeholder="Data de nascimento" required [(ngModel)]="professor.data_nascimento" name="data_nascimento">
+      <mat-datepicker-toggle matSuffix [for]="data_nascimento"></mat-datepicker-toggle>
+      <mat-datepicker #data_nascimento></mat-datepicker>
+   </mat-form-field>
+
+   <mat-form-field>
+      <input matInput placeholder="CPF" required [(ngModel)]="professor.cpf" 
+         mask="000.000.000-00" name="cpf">
+   </mat-form-field>
+
+   <mat-form-field>
+      <input matInput placeholder="Documento de identidade" required 
+         [(ngModel)]="professor.rg" name="rg">
+   </mat-form-field>
+
+   <mat-form-field>
+      <input matInput type="number" step="0.01" placeholder="Valor da hora/aula" 
+         required [(ngModel)]="professor.valor_hora_aula" name="valor_hora_aula">
+      <mat-icon matPrefix>attach_money</mat-icon>
+   </mat-form-field>
+
+   <mat-form-field>
+      <input matInput type="email" placeholder="E-mail" required 
+         [(ngModel)]="professor.email" name="email">
+         <mat-icon matPrefix>email</mat-icon>
+   </mat-form-field>
+
+   <mat-toolbar class="form-actions">
+      <mat-toolbar-row>
+         <button mat-raised-button type="submit" color="accent">Salvar</button>
+         <button mat-raised-button>Voltar</button>
+      </mat-toolbar-row>
+   </mat-toolbar>
 
 </form>

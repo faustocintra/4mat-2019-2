@@ -27,4 +27,16 @@ export class ProfessorService {
       {body: {_id: id}}).toPromise();
   }
 
+  novo(professor: any) {
+    return this.http.post(env.apiBaseUri + this.entryPoint, professor).toPromise();
+  }
+
+  obterUm(id: string) {
+    return this.http.get(env.apiBaseUri + this.entryPoint + '/' + id).toPromise();
+  }
+
+  atualizar(professor: any) {
+    return this.http.put(env.apiBaseUri + this.entryPoint, professor).toPromise();
+  }
+
 }
