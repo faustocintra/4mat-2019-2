@@ -30,6 +30,8 @@ import { ConfirmDlgComponent } from './ui/confirm-dlg/confirm-dlg.component';
 import { MatDialogModule } from '@angular/material';
 import { ProfessorFormComponent } from './professor/professor-form/professor-form.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { TurmaListComponent } from './turma/turma-list/turma-list.component';
+import { TurmaFormComponent } from './turma/turma-form/turma-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { NgxMaskModule } from 'ngx-mask';
     AppFooterComponent,
     ProfessorListComponent,
     ConfirmDlgComponent,
-    ProfessorFormComponent
+    ProfessorFormComponent,
+    TurmaListComponent,
+    TurmaFormComponent
   ],
   imports: [
     HttpClientModule,
