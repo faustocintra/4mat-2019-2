@@ -5,7 +5,8 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { TurmaService } from '../turma.service';
 import { ConfirmDlgComponent } from '../../ui/confirm-dlg/confirm-dlg.component';
 import { ProfessorService } from '../../professor/professor.service';
-import { CursoService } from '../../curso/curso.service'; 
+import { CursoService } from '../../curso/curso.service';
+import * as moment from 'moment'; 
 
 @Component({
   selector: 'app-turma-form',
@@ -48,6 +49,7 @@ export class TurmaFormComponent implements OnInit {
       if(params['id']) { // Se houver um parâmetro "id" na rota
         // Busca a turma do id passado
         this.turma = await this.turmaSrv.obterUm(params['id']);
+
         // Alterar o título da página
         this.title = 'Editando turma';
       }
@@ -63,8 +65,10 @@ export class TurmaFormComponent implements OnInit {
   }
 
   async salvar(form: NgForm) {
+    
     if(form.valid) {
       try {
+        
         let msg = 'Nova turma criada com sucesso.'
         
         if(this.turma._id) { // Se tem _id, é edição
