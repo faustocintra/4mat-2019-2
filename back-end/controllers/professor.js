@@ -24,7 +24,7 @@ controller.novo = async function(req, res) {
 controller.listar = async function(req, res) {
    try {
       // Retorna um vetor de professores
-      const professores = await Professor.find();
+      const professores = await Professor.find().sort('nome');
       res.send(professores); 
    }
    catch(erro) {

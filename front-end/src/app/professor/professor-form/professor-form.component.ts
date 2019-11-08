@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { ProfessorService } from '../professor.service';
+import { ConfirmDlgComponent } from '../../ui/confirm-dlg/confirm-dlg.component';
 
 @Component({
   selector: 'app-professor-form',
@@ -15,7 +16,8 @@ export class ProfessorFormComponent implements OnInit {
     private professorSrv: ProfessorService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   title: string = 'Novo professor';
@@ -62,6 +64,27 @@ export class ProfessorFormComponent implements OnInit {
           duration: 4000,
         });
       }
+    }
+  }
+
+  async voltar(form: NgForm) {
+    let result = true;
+    // form.dirty: o formulário foi alterado via código (está "sujo")
+    // form.touched: o formulário foi alterado pelo usuário
+    if(form.dirty && form.touched) {
+      try {
+        const dialogRef = this.dialog.open(ConfirmDlgComponent, {
+          width: '50%',
+          data: {question: 'Há dados não salvos. Deseja realmente voltar?'}
+        });
+        result = await dialogRef.afterClosed().toPromise();
+      }
+      catch(error) {
+        console.error(error);
+      }
+    }
+    if(result) {
+      this.router.navigate(['/professor']); // Volta para a listagem
     }
   }
 

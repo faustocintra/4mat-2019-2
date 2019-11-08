@@ -40,10 +40,10 @@
 
    <!-- Horario Column -->
    <ng-container matColumnDef="horario">
-      <th mat-header-cell *matHeaderCellDef> Dia semana </th>
+      <th mat-header-cell *matHeaderCellDef> Horário </th>
       <td mat-cell *matCellDef="let turma"> 
-         {{turma.horario_inicial | date:"HH'h'mm" }} às 
-         {{turma.horario_final | date:"HH'h'mm" }} 
+         {{turma.horario_inicial | mask:"Hh:m0" }} às 
+         {{turma.horario_final | mask:"Hh:m0" }} 
       </td>
    </ng-container>
 
